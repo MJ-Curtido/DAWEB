@@ -1,0 +1,23 @@
+services:
+    adminer:
+        image: adminer:5
+        ports:
+            - 8080:8080
+        depends_on:
+            - db
+        restart: unless-stopped
+    db:
+        image: mysql:8.4
+        environment:
+            MYSQL_ROOT_PASSWORD: clave-aula
+            MYSQL_DATABASE: aula
+            MYSQL_USER: alumno
+            MYSQL_PASSWORD: clave-alumno
+
+        volumes:
+            - mysql_datos:/var/lib/mysql
+            - ./sql:/docker-entrypoint-initdb.d:ro
+        restart: unless-stopped
+
+volumes:
+    mysql_datos:

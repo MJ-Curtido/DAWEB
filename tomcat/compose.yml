@@ -1,0 +1,9 @@
+services:
+    tomcat:
+        image: tomcat:10.1-jdk17
+        container_name: mitomcat
+        ports:
+            - '8080:8080'
+        volumes:
+            - ./app.war:/usr/local/tomcat/webapps/ROOT.war
+        restart: unless-stopped

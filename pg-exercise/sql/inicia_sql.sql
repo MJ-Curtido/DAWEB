@@ -1,0 +1,8 @@
+USE game;
+CREATE TABLE IF NOT EXISTS GAMES (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(80) NOT NULL,
+	price DECIMAL(8,2) NOT NULL
+);
+INSERT INTO GAMES (name, price)
+VALUES ('Hollow Knight', 19.90), ('Detroit Become Human', 40);

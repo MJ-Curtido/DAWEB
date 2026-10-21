@@ -1,0 +1,19 @@
+services:
+    db:
+        image: postgres:18
+        restart: always
+
+        environment:
+            POSTGRES_DB: game
+            POSTGRES_USER: manu
+            POSTGRES_PASSWORD: 1234
+        
+        volumes:
+            - pg_volumen:/var/lib/postgresql
+            - ./sql:/docker-entrypoint-initdb.d:ro
+
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8080:8080
